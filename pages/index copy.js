@@ -4,9 +4,6 @@ import { Inter } from '@next/font/google'
 import { useState } from 'react';
 
 function Index() {
-  const [timeIn, setTimeIn] = useState('');
-  const [timeOut, setTimeOut] = useState('');
-
   // Hantera tillstånd för formulärdata med useState hooken
   const [formData, setFormData] = useState({
     username: '',
@@ -19,48 +16,33 @@ function Index() {
   // Hantera ändringar i formulärfält med en onChange funktion
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    if (name === 'timeIn') {
-      setTimeIn(value);
-    } else if (name === 'timeOut') {
-      setTimeOut(value);
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    }
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
-  const calculateHours = () => {
-    const [hoursIn, minutesIn] = timeIn.split(':').map(Number);
-    const [hoursOut, minutesOut] = timeOut.split(':').map(Number);
-    const totalMinutes = (hoursOut - hoursIn) * 60 + (minutesOut - minutesIn);
-    return Math.max(totalMinutes / 60, 0).toFixed(2);
-  };
-
 
 
   // Skicka formulärdata till backenden med en submit funktion
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const hours = calculateHours();
     try {
       const response = await fetch('/api/timereports', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...formData, hours }),
+        body: JSON.stringify(formData),
       });
       if (response.ok) {
+        // Töm formulärfälten när tidrapporten har skickats till backenden
         setFormData({
           username: '',
           projectInfo: '',
           date: '',
-          timeIn: '',
-          timeOut: '',
+          time: '',
+          hours: '',
         });
-        setTimeIn('');
-        setTimeOut('');
       } else {
         console.log('Fel vid skickande av tidrapport');
       }
@@ -68,7 +50,6 @@ function Index() {
       console.log(error);
     }
   };
-
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -203,7 +184,7 @@ function Index() {
             </div>
 
 
-            {/* <div>
+            <div>
               <label
                 htmlFor="hours"
                 className="block text-sm font-medium text-gray-700"
@@ -220,36 +201,8 @@ function Index() {
                   onChange={handleInputChange}
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 />
-                <p className="mt-1 text-sm text-gray-500">
-                  Antal arbetade timmar: {calculateHours()}
-                </p>
-              </div>
-            </div> */}
-            <div>
-              <label
-                htmlFor="hours"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Antal arbetade timmar
-              </label>
-              <div className="mt-1">
-
-                <input
-                  id="hours"
-                  name="hours"
-                  type="number"
-                  required
-                  defaultValue={calculateHours()}
-                  onChange={handleInputChange}
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                />
               </div>
             </div>
-
-
-
-
-
 
             <div>
               <button
