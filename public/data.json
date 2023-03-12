@@ -1,0 +1,95 @@
+{
+  "reports": [
+    
+  {
+    "id": 1,
+    "username":"Einar L",
+    "projectInfo": "Rallarvägen",
+    "date": "2022-03-01",
+    "timeIn": "08:00",
+    "timeOut": "16:00",
+    "hours": 8
+  },
+  {
+    "id": 2,
+    "username": "Einar L",
+    "projectInfo": "Sjöängsvägen",
+    "date": "2022-03-02",
+    "timeIn": "09:00",
+    "timeOut": "17:00",
+    "hours": 8
+  },
+  {
+    "id": 3,
+    "username": "Einar L",
+    "projectInfo": "Rosendalsvägen",
+    "date": "2022-03-03",
+    "timeIn": "08:30",
+    "timeOut": "16:30",
+    "hours": 8
+  },
+  {
+    "id": 4,
+    "username": "Einar L",
+    "projectInfo": "Sjöängsvägen",
+    "date": "2022-03-04",
+    "timeIn": "08:15",
+    "timeOut": "16:15",
+    "hours": 8
+  },
+  {
+    "id": 5,
+    "username": "Einar L",
+    "projectInfo": "Rosendalsvägen",
+    "date": "2022-03-05",
+    "timeIn": "08:00",
+    "timeOut": "16:00",
+    "hours": 8
+  },
+  {
+    "id": 6,
+    "username": "Einar L",
+    "projectInfo": "Sjöängsvägen",
+    "date": "2022-03-06",
+    "timeIn": "10:00",
+    "timeOut": "18:00",
+    "hours": 8
+  },
+  {
+    "id": 7,
+    "username": "Einar L",
+    "projectInfo": "Rallarvägen",
+    "date": "2022-03-07",
+    "timeIn": "08:30",
+    "timeOut": "16:30",
+    "hours": 8
+  },
+  {
+    "id": 8,
+    "username": "Einar L",
+    "projectInfo": "Sjöängsvägen",
+    "date": "2022-03-08",
+    "timeIn": "09:00",
+    "timeOut": "17:00",
+    "hours": 8
+  },
+  {
+    "id": 9,
+    "username": "Einar L",
+    "projectInfo": "Rosendalsvägen",
+    "date": "2022-03-09",
+    "timeIn": "08:00",
+    "timeOut": "16:00",
+    "hours": 8
+  },
+  {
+    "id": 10,
+    "username": "Einar L",
+    "projectInfo": "Sjöängsvägen",
+    "date": "2022-03-10",
+    "timeIn": "08:00",
+    "timeOut": "16:00",
+    "hours":8
+  }
+  ]
+}

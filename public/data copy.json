@@ -1,0 +1,67 @@
+{
+  "reports": [
+    {
+      "id": 1,
+      "username": "Einar L",
+      "projectInfo": "Projekt 1",
+      "date": "2022-03-11",
+      "timeIn": "09:00",
+      "timeOut": "12:00",
+      "hours": 3
+    },
+    {
+      "id": 2,
+      "username": "Einar L",
+      "projectInfo": "Projekt 2",
+      "date": "2022-03-10",
+      "timeIn": "08:00",
+      "timeOut": "16:00",
+      "hours": 8
+    },
+    {
+      "id": 3,
+      "username": "Einar L",
+      "projectInfo": "Projekt 3",
+      "date": "2022-03-09",
+      "timeIn": "10:00",
+      "timeOut": "12:00",
+      "hours": 2
+    },
+    {
+      "id": 4,
+      "username": "Einar L",
+      "projectInfo": "Projekt 4",
+      "date": "2022-03-08",
+      "timeIn": "09:30",
+      "timeOut": "17:00",
+      "hours": 7.5
+    },
+    {
+      "id": 5,
+      "username": "Einar L",
+      "projectInfo": "Projekt 5",
+      "date": "2022-03-07",
+      "timeIn": "08:00",
+      "timeOut": "15:30",
+      "hours": 7.5
+    },
+    {
+      "id": 6,
+      "username": "Einar L",
+      "projectInfo": "Projekt 6",
+      "date": "2022-03-06",
+      "timeIn": "11:00",
+      "timeOut": "14:00",
+      "hours": 3
+    },
+    {
+      "id": 7,
+      "username": "Einar L",
+      "projectInfo": "Projekt 7",
+      "date": "2022-03-05",
+      "timeIn": "13:00",
+      "timeOut": "17:00",
+      "hours": 4
+    }
+  ]
+}

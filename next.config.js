@@ -4,3 +4,8 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+module.exports = {
+  publicRuntimeConfig: {
+    DATA_FILE: 'data.json'
+  }
+}
