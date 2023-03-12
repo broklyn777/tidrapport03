@@ -60,8 +60,34 @@ export default function Tidrapport({ reports }) {
                     Rensa
                 </button>
             </div>
+            <table className="table-auto w-full">
+                <thead>
+                    <tr className="bg-gray-100">
+                        <th className="px-4 py-2">#</th>
+                        <th className="px-4 py-2">Användarnamn</th>
+                        <th className="px-4 py-2">Projektinformation</th>
+                        <th className="px-4 py-2">Datum</th>
+                        <th className="px-4 py-2">Tid in</th>
+                        <th className="px-4 py-2">Tid ut</th>
+                        <th className="px-4 py-2">Arbetade timmar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {filteredReports.map((report) => (
+                        <tr key={report.id}>
+                            <td className="border px-4 py-2">{report.id}</td>
+                            <td className="border px-4 py-2">{report.username}</td>
+                            <td className="border px-4 py-2">{report.projectInfo}</td>
+                            <td className="border px-4 py-2">{report.date}</td>
+                            <td className="border px-4 py-2">{report.timeIn}</td>
+                            <td className="border px-4 py-2">{report.timeOut}</td>
+                            <td className="border px-4 py-2">{report.hours}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
 
-            <ul>
+            {/* <ul>
                 {filteredReports.length > 0 ? (
                     filteredReports.map((report) => (
                         <li key={report.id}>
@@ -76,7 +102,7 @@ export default function Tidrapport({ reports }) {
                 ) : (
                     <p>Inga tidrapporter för valt projekt.</p>
                 )}
-            </ul>
+            </ul> */}
 
         </Layout>
     );
