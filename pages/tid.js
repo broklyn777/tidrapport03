@@ -3,48 +3,53 @@ import { format } from "date-fns";
 import { sv } from "date-fns/locale";
 import path from "path";
 import fs from "fs";
-import { useState, useEffect } from 'react'
-
-
-
+import { useState, useEffect } from "react";
+import DateRangePicker from "../components/DateRangePicker";
 
 
 export default function Tidrapport({ reports }) {
-    const [searchTerm, setSearchTerm] = useState('');
+
+
+    const [searchTerm, setSearchTerm] = useState("");
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const [filteredReports, setFilteredReports] = useState(reports);
 
     function handleSearch(event) {
         setSearchTerm(event.target.value);
     }
 
-    const [date, setDate] = useState(new Date());
-    const [filteredReports, setFilteredReports] = useState(reports);
-
+    function handleDateChange(date) {
+        setStartDate(date[0]);
+        setEndDate(date[1]);
+    }
     useEffect(() => {
         const filtered = reports.filter((report) =>
+            report.date >= startDate?.toISOString()?.substr(0, 10) &&
+            report.date <= endDate?.toISOString()?.substr(0, 10) &&
             report.projectInfo.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setFilteredReports(filtered);
-    }, [reports, searchTerm]);
+    }, [reports, searchTerm, startDate, endDate]);
 
-    function handleDateChange(e) {
-        setDate(new Date(e.target.value));
-    }
 
-    useEffect(() => {
-        async function fetchReports() {
-            const res = await fetch("/api/reports");
-            const data = await res.json();
-            setFilteredReports(data);
-        }
-        fetchReports();
-    }, [date]);
+
+
 
     return (
-
         <Layout>
             <h1 className="text-gray-800 font-bold text-2xl mb-4">
-                Tidrapporter för {format(date, "dd MMMM yyyy")}
+                Tidrapporter  {format(new Date(), "dd MMMM yyyy", { locale: sv })}
             </h1>
+
+
+
+            <DateRangePicker
+
+                onStartDateChange={setStartDate}
+                onEndDateChange={setEndDate}
+            />
+
             <div className="flex justify-end mb-4">
                 <input
                     type="text"
@@ -55,11 +60,12 @@ export default function Tidrapport({ reports }) {
                 />
                 <button
                     className="ml-2 px-3 py-1 bg-indigo-500 hover:bg-indigo-600 text-white rounded-md"
-                    onClick={() => setSearchTerm('')}
+                    onClick={() => setSearchTerm("")}
                 >
                     Rensa
                 </button>
             </div>
+
             <table className="table-auto w-full">
                 <thead>
                     <tr className="bg-gray-100">
@@ -86,24 +92,6 @@ export default function Tidrapport({ reports }) {
                     ))}
                 </tbody>
             </table>
-
-            {/* <ul>
-                {filteredReports.length > 0 ? (
-                    filteredReports.map((report) => (
-                        <li key={report.id}>
-                            <p>Användarnamn: {report.username}</p>
-                            <p>Projektinformation: {report.projectInfo}</p>
-                            <p>Datum: {format(new Date(report.date), "dd MMMM yyyy", { locale: sv })}</p>
-                            <p>Tid in: {report.timeIn}</p>
-                            <p>Tid ut: {report.timeOut}</p>
-                            <p>Antal arbetade timmar: {report.hours}</p>
-                        </li>
-                    ))
-                ) : (
-                    <p>Inga tidrapporter för valt projekt.</p>
-                )}
-            </ul> */}
-
         </Layout>
     );
 }
